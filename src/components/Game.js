@@ -22,7 +22,7 @@ const Game = () => {
   function getStatus() {
     console.log(winner)
     if (winner) {
-      return "Winner: " + winner;
+      return isXNext ? "Winner: O" : "Winner: X"
     } else if (isBoardFull(squares)) {
       return "Draw!";
     } else {

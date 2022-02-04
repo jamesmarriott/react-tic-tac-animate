@@ -7,16 +7,39 @@
   overflow: hidden;
 }
 
+button{
+  background-color: transparent;
+}
+
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: #222222;
   font-family: "Roboto", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+}
+
+.grid-container{
+  display: grid;
+  position: relative;
+  text-align: center;
+  grid-template-columns: auto auto auto;
+}
+
+.board-draw{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  
+}
+
+.window-description{
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  width: 100%;
+  font-size: 2rem;
 }
 
 circle,
@@ -29,6 +52,8 @@ line {
 h1 {
   margin: 2rem;
 }
+
+
 
 
 /* .info-wrapper button {
@@ -48,21 +73,18 @@ h1 {
 
 } */
   
-.winline-holder {
+.winline-holder {   
     position: fixed;
-    top: 50;
-    left: 50;
-    right: 50;
-    bottom: 50;
     background: rgba(0,0,0,0.5);
     z-index: 1;
-    height: calc(100vh/1.65);
-    width: calc(100vh/1.65);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
   .winline-inner {
-    margin: 0 auto;
-    border-radius: 10px;
-    text-align: center;
+    width: 100vw;
+    height: 100vh;
   }
 
 .status {

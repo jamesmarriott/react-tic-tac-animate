@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { calculateWinner } from "../helper";
 import Square from "./Square";
 import DrawWin from './DrawWin'
+// import Board from './Board'
+import DrawGrid from "./DrawGrid";
 
 const Game = () => {
   const [ squares, setSquares ] = useState(Array(9).fill(null));
@@ -20,7 +22,7 @@ const Game = () => {
   }
 
   function getStatus() {
-    console.log(winner)
+    
     if (winner) {
       return isXNext ? "Winner: O" : "Winner: X"
     } else if (isBoardFull(squares)) {
@@ -50,7 +52,7 @@ const Game = () => {
     );
   }
 
-  console.log(winner)
+  
 
   function renderSquare(i) {
 
@@ -72,30 +74,27 @@ const Game = () => {
   }
 
 return (
-    <div className="container">
-      <div className="game">
+
+  // <Board/>
+
+
+    <div className="grid-container">
+      <DrawGrid/>
       {winner && <DrawWin winner={winner}/>}
-        <div className="game-board">
-          <div className="board-row">
             {renderSquare(0)}
             {renderSquare(1)}
             {renderSquare(2)}
-          </div>
-          <div className="board-row">
             {renderSquare(3)}
             {renderSquare(4)}
             {renderSquare(5)}
-          </div>
-          <div className="board-row">
             {renderSquare(6)}
             {renderSquare(7)}
             {renderSquare(8)}
-          </div>
-        </div>
-        <div className="game-info">{getStatus()}</div>
+
+        <div className="game-info">{getStatus()}</div> 
         <div className="restart-button">{renderRestartButton()}</div>
       </div>
-    </div>
+
 )
 };
 

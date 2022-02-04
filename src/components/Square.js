@@ -3,22 +3,23 @@ import DrawO from "./DrawO";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 export default function Square({ value, onClick }) {
-  
-  const { height } = useWindowDimensions();
 
-  const styleSize = {
-    width: `${height/ 5}px`,
-    height: `${height/ 5}px`,
-    borderLeft: `${height/ 150}px solid black`,
-    borderBottom: `${height/ 150}px solid black`,
+  const { height, width } = useWindowDimensions();
+
+  const buttonSize = {
+    width: `${width/ 3}px`,
+    height: `${height/ 3}px`,
+    backgroundColor: 'transparent'
   }
 
   return (
-    <button style={styleSize} className="square" onClick={onClick}>
+    <div>
+    <button style={buttonSize} className="square" onClick={onClick}>
       {value === "" ? value :
         value === "X" ? <DrawX height={height}/> :
         value === "O" ? <DrawO height={height}/>
         : null}
-        </button>
+    </button>
+    </div>
   );
 }

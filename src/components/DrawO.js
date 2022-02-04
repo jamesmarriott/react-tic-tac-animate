@@ -1,22 +1,24 @@
 import { motion } from "framer-motion";
 import { drawPath } from "./DrawMotion";
 
+
 export default function Draw({height}) {
 
+  const viewBoxDim = `0 0 ${height/3} ${height/3}`
 
   return (
     <motion.svg
-      width="600"
-      height="600"
-      viewBox="0 0 600 600"
+      height="100%"
+      width="100%"
+      viewBox={viewBoxDim}
       initial="hidden"
       animate="visible"
     >
       <motion.circle
-        cx={height/10-(height/150)}
-        cy={height/10-(height/150)}
-        r={height/14}
-        stroke-width={height/80}
+        cx={height/6}
+        cy={height/6}
+        r={height/6-(height/25)}
+        stroke-width={height/100}
         stroke="#0099ff"
         variants={drawPath}
         custom={1}

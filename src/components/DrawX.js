@@ -3,30 +3,35 @@ import { drawPath } from "./DrawMotion";
 
 export default function DrawX({height}) {
 
+const squareSide = height/3
+const diagLength = Math.sqrt(2) * squareSide
+console.log(squareSide, diagLength)
  
+const viewBoxDim = `0 0 ${height/3} ${height/3}`
+
   return (
     <motion.svg
-      width="600"
-      height="600"
-      viewBox="0 0 600 600"
+      height="100%"
+      width="100%"
+      viewBox={viewBoxDim}
       initial="hidden"
       animate="visible"
     >
       <motion.line
-        x1={height/25-(height/150)}
-        y1={height/25-(height/150)}
-        x2={height/6}
-        y2={height/6}
+        x1={height/25}
+        y1={height/25}
+        x2={squareSide-(height/25)}
+        y2={squareSide-(height/25)}
         stroke-width={height/80}
         stroke="#ff0055"
         custom={1}
         variants={drawPath}
       />
       <motion.line
-        x1={height/25-(height/150)}
-        y1={height/6}
-        x2={height/6}
-        y2={height/25-(height/150)}
+        x1={squareSide-(height/25)}
+        y1={height/25}
+        x2={height/25}
+        y2={squareSide-(height/25)}
         stroke-width={height/80}
         stroke="#ff0055"
         custom={3.5}

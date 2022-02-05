@@ -16,7 +16,7 @@ export default function DrawGrid() {
     const ypos4 = height-(height/50)
     const strokeW = width/120
     
-    const squareSide = height
+    // const squareSide = height
 
     // const viewBoxDim = `0 0 ${height} ${height}`
     

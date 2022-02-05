@@ -128,4 +128,3 @@ console.log(winner[0])
   </motion.div>
   );
 }
-

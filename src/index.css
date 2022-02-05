@@ -7,9 +7,6 @@
   overflow: hidden;
 }
 
-button{
-  background-color: transparent;
-}
 
 body {
   background: #222222;
@@ -17,6 +14,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.loader{
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+button{
+  background-color: transparent;
+}
+
+
+.restart-button {
+  border: none; 
+  font-size: calc(10px + 2vmin);
 }
 
 .grid-container{
@@ -31,7 +50,6 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  
 }
 
 .window-description{
@@ -53,26 +71,6 @@ h1 {
   margin: 2rem;
 }
 
-
-
-
-/* .info-wrapper button {
-  background: #272727;
-  color: white;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  margin: 0.5rem 1rem;
-} */
-
-
-/* .board-row:after {
-  clear: both;
-  content: "";
-
-} */
-  
 .winline-holder {   
     position: fixed;
     background: rgba(0,0,0,0.5);
@@ -82,6 +80,7 @@ h1 {
     right: 0;
     left: 0;
   }
+  
   .winline-inner {
     width: 100vw;
     height: 100vh;
@@ -117,36 +116,4 @@ h1 {
     color: #424242;
     margin-top: 20px;
     text-align: center;
-  }
-  
-  .restart-button {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .restart:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  }
-  
-  .restart:focus {
-    outline: none;
-  }
-  
-  .restart:active {
-    box-shadow: 0 1px #424242;
-    transform: translateY(1px);
-  }
-  
-  .restart {
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    background-color: #424242;
-    color: #fffde7;
-    border: none;
-    font-size: 24px;
-    line-height: 48px;
-    height: 48px;
-    width: 40%;
-    text-align: center;
-    border-radius: 4px;
   }

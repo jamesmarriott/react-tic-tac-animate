@@ -1,9 +1,11 @@
 import DrawX from "./DrawX";
 import DrawO from "./DrawO";
+import { motion } from "framer-motion";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 export default function Square({ value, onClick }) {
 
+  
   const { height, width } = useWindowDimensions();
 
   const buttonSize = {
@@ -12,14 +14,28 @@ export default function Square({ value, onClick }) {
     backgroundColor: 'transparent'
   }
 
+  const buttonVariants = {
+    hover: {
+      transition: {
+        duration: 0.3,
+        yoyo: Infinity
+      }
+    }
+  }
   return (
-    <div>
-    <button style={buttonSize} className="square" onClick={onClick}>
+    <motion.div>
+    <motion.button 
+    style={buttonSize} 
+    className="square"
+    onClick={onClick}
+    variants={buttonVariants}
+    whileHover="hover"
+    >
       {value === "" ? value :
         value === "X" ? <DrawX height={height}/> :
         value === "O" ? <DrawO height={height}/>
         : null}
-    </button>
-    </div>
+    </motion.button>
+    </motion.div>
   );
 }

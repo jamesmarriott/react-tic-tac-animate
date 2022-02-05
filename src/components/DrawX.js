@@ -4,8 +4,8 @@ import { drawPath } from "./DrawMotion";
 export default function DrawX({height}) {
 
 const squareSide = height/3
-const diagLength = Math.sqrt(2) * squareSide
-console.log(squareSide, diagLength)
+// const diagLength = Math.sqrt(2) * squareSide
+
  
 const viewBoxDim = `0 0 ${height/3} ${height/3}`
 

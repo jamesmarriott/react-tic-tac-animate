@@ -1,58 +1,31 @@
 import React, { useState } from "react";
-import { calculateWinner } from "../helper";
+import { calculateWinner, isBoardFull } from "../helper";
 import Square from "./Square";
 import DrawWin from './DrawWin'
+import DrawNoWin from './DrawNoWin'
 // import Board from './Board'
 import DrawGrid from "./DrawGrid";
 
-const Game = () => {
+const Game = ({gameStatusUpdate}) => {
   const [ squares, setSquares ] = useState(Array(9).fill(null));
   const [ isXNext, setIsXNext ] = useState(true);
+  const isDraw = isBoardFull(squares)
   const nextSymbol = isXNext ? "X" : "O";
   const winner = calculateWinner(squares);
 
-
-  function Restart({ onClick }) {
-
-    return (
-      <button className="restart" onClick={onClick}>
-        Play again
-      </button>
-    );
-  }
+  console.log(gameStatusUpdate)
 
   function getStatus() {
     
     if (winner) {
+      gameStatusUpdate()
       return isXNext ? "Winner: O" : "Winner: X"
     } else if (isBoardFull(squares)) {
-      return "Draw!";
+      gameStatusUpdate()
     } else {
       return "Player: " + nextSymbol;
     }
   }
-
-  function isBoardFull(squares) {
-    for (let i = 0; i < squares.length; i++) {
-      if (squares[i] == null) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  function renderRestartButton() {
-    return (
-      <Restart
-        onClick={() => {
-          setSquares(Array(9).fill(null));
-          setIsXNext(true);
-        }}
-      />
-    );
-  }
-
-  
 
   function renderSquare(i) {
 
@@ -67,7 +40,7 @@ const Game = () => {
           const nextSquares = squares.slice();
           nextSquares[i] = nextSymbol;
           setSquares(nextSquares);
-          setIsXNext(!isXNext); // toggle turns
+          setIsXNext(!isXNext); 
         }}
       />
     )
@@ -77,10 +50,24 @@ return (
 
   // <Board/>
 
-
     <div className="grid-container">
+
       <DrawGrid/>
-      {winner && <DrawWin winner={winner}/>}
+      {winner &&
+        <>
+        <DrawWin winner={winner}>
+        </DrawWin>
+        </>
+
+        }
+
+      {isDraw && 
+        <>
+          <DrawNoWin>
+          </DrawNoWin>
+        </>
+      }
+
             {renderSquare(0)}
             {renderSquare(1)}
             {renderSquare(2)}
@@ -90,9 +77,8 @@ return (
             {renderSquare(6)}
             {renderSquare(7)}
             {renderSquare(8)}
+        <div className="game-info">{getStatus()}</div>
 
-        <div className="game-info">{getStatus()}</div> 
-        <div className="restart-button">{renderRestartButton()}</div>
       </div>
 
 )

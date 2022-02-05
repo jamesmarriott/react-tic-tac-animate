@@ -52,7 +52,7 @@ export default function RestartButton({onClick}) {
         variants={buttonVariants}
         whileHover="hover"
         >
-        X || O
+        X v O
         </motion.button>
     </motion.div>
   );

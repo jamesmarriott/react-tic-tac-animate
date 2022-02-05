@@ -7,9 +7,8 @@ Framer Motion
 
 ### To Do
 
-Fake Loader with animate in / out
 Restart button - float in
-Draw animation of some kind
+Draw animation - make better
 Make words version for teachers
 
 ### Extras

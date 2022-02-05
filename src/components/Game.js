@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import { calculateWinner, isBoardFull } from "../helper";
 import Square from "./Square";
 import DrawWin from './DrawWin'
@@ -26,6 +26,7 @@ const Game = ({gameStatusUpdate}) => {
       return "Player: " + nextSymbol;
     }
   }
+
 
   function renderSquare(i) {
 

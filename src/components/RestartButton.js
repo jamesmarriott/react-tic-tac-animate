@@ -7,7 +7,7 @@ export default function RestartButton({onClick}) {
     const { height, width } = useWindowDimensions();
 
     const buttonSize = {
-      width: `${width/ 12}px`,
+      width: `${width/ 3}px`,
       height: `${height/12}px`,
       color: 'white'
     }

@@ -8,8 +8,6 @@ function App() {
 
   const [loading, setLoader] = useState(true)
   const [gameInPlay, setGameInPlay] = useState(false)
-
-
   
   const gameStatusUpdate = () => {
       setTimeout(()=>{
@@ -23,7 +21,6 @@ function App() {
     },2000)
     return () => clearTimeout(timer);
   },[loading])
-
 
   
   return (

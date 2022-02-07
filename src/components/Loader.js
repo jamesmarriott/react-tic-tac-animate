@@ -8,7 +8,7 @@ const containerVariants = {
       scale: 3,
     },
     visible: { 
-      opacity: 1, 
+      opacity: 1,
       scale: [1, 2, 2, 1, 1],
       rotate: [0, 90, 360, 90],
        transition: {
@@ -20,7 +20,6 @@ const containerVariants = {
 
 const Loader = ({loading}) => {
 
-    
  let num = Math.random()
 
   return (

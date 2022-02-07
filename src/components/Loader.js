@@ -1,9 +1,9 @@
 import React from 'react'
-import { motion, AnimatePresence} from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 
 const containerVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
       scale: 3,
     },
@@ -15,16 +15,17 @@ const containerVariants = {
        duration: 3,
        repeat: Infinity
        },
+       
     }
   };
 
 const Loader = ({loading}) => {
-
+  
  let num = Math.random()
 
   return (
     <>
-     <AnimatePresence exitBeforeEnter>
+     <AnimatePresence>
      {loading && (
       <motion.div className="loader"
       variants={containerVariants}
@@ -32,7 +33,7 @@ const Loader = ({loading}) => {
       animate="visible"
       exit="hidden"
       >
-      <motion.h1>{num < 0.5 ? "X" : "O"}</motion.h1>
+      <h1>{num < 0.5 ? "X" : "O"}</h1>
       </motion.div>
         )}
       </AnimatePresence>

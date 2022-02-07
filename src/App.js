@@ -7,6 +7,7 @@ import RestartButton from './components/RestartButton';
 function App() {
 
   const [loading, setLoader] = useState(true)
+  const [startScreen, setStartScreen] = useState(true)
   const [gameInPlay, setGameInPlay] = useState(false)
   
   const gameStatusUpdate = () => {
@@ -16,8 +17,14 @@ function App() {
   }
   
   useEffect(()=>{
+    setStartScreen(true)
+  },[gameInPlay])
+
+  
+  useEffect(()=>{
     const timer = setTimeout(()=>{
       setLoader(false)
+      setStartScreen(true)
     },2000)
     return () => clearTimeout(timer);
   },[loading])
@@ -26,13 +33,14 @@ function App() {
   return (
 
   <>   
-     {loading && <Loader loading={loading}/>}
-     <AnimatePresence exitBeforeEnter onExitComplete={() => setLoader(false)}>
-
-    {!loading && !gameInPlay && <RestartButton onClick={()=>setGameInPlay(true)}/>}
-
-     {!loading && gameInPlay && <Game gameStatusUpdate={gameStatusUpdate}/>}
-     
+    <AnimatePresence exitBeforeEnter onExitComplete={() => setLoader(false)}>
+     <Loader loading={loading}/>
+     </AnimatePresence>
+     <AnimatePresence exitBeforeEnter onExitComplete={() => setStartScreen(false)}>
+    <RestartButton gameInPlay={gameInPlay} startScreen={startScreen} onClick={()=>setGameInPlay(true)}/>
+    </AnimatePresence>
+     <AnimatePresence exitBeforeEnter onExitComplete={() => setGameInPlay(false)}>
+     {gameInPlay && <Game gameStatusUpdate={gameStatusUpdate} gameInPlay={gameInPlay}/>}
      </AnimatePresence>
 
   </>

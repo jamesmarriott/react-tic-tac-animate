@@ -1,4 +1,5 @@
-import React, { useState, } from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { calculateWinner, isBoardFull } from "../helper";
 import Square from "./Square";
 import DrawWin from './DrawWin'
@@ -6,17 +7,15 @@ import DrawNoWin from './DrawNoWin'
 // import Board from './Board'
 import DrawGrid from "./DrawGrid";
 
-const Game = ({gameStatusUpdate}) => {
+const Game = ({gameStatusUpdate, gameInPlay }) => {
   const [ squares, setSquares ] = useState(Array(9).fill(null));
   const [ isXNext, setIsXNext ] = useState(true);
   const isDraw = isBoardFull(squares)
   const nextSymbol = isXNext ? "X" : "O";
   const winner = calculateWinner(squares);
 
-  console.log(gameStatusUpdate)
 
   function getStatus() {
-    
     if (winner) {
       gameStatusUpdate()
       return isXNext ? "Winner: O" : "Winner: X"
@@ -51,7 +50,12 @@ return (
 
   // <Board/>
 
-    <div className="grid-container">
+    <motion.div className="grid-container"
+    
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          >
 
       <DrawGrid/>
       {winner &&
@@ -80,8 +84,8 @@ return (
             {renderSquare(8)}
         <div className="game-info">{getStatus()}</div>
 
-      </div>
-
+      </motion.div>
+    
 )
 };
 

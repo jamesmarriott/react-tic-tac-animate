@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import useWindowDimensions from "../hooks/useWindowsDimensions";
 
 
-export default function RestartButton({onClick}) {
+export default function RestartButton({onClick, gameInPlay, startScreen}) {
  
     const { height, width } = useWindowDimensions();
 
@@ -12,25 +12,16 @@ export default function RestartButton({onClick}) {
       color: 'white'
     }
 
-    // const containerVariants = {
-    //   hidden: { 
-    //     opacity: 0, 
-    //   },
-    //   visible: { 
-    //     opacity: 1, 
-    //     transition: { delay: 1.5, duration: 1.5 }
-    //   },
-    //   exit: {
-    //     x: "-100vh",
-    //     transition: { ease: 'easeInOut' }
-    //   }
-    // };
   
     const buttonVariants = {
+      hidden: { scale: 0},
+      visible: { 
+        scale: 1,
+        transition: { delay: 0.5 }
+      },
       hover: {
         scale: 1.1,
         textShadow: "0px 0px 8px rgb(255,255,255)",
-  
         transition: {
           duration: 0.3,
         }
@@ -39,22 +30,26 @@ export default function RestartButton({onClick}) {
     
 
   return (
-    <motion.div 
-    className="loader"
-    initial="hidden"
-    animate="visible"
-    exit="exit"
-    >
-        <motion.button
-        className="restart-button"
-        style={buttonSize} 
-        onClick={onClick}
-        variants={buttonVariants}
-        whileHover="hover"
-        >
-        X v O
-        </motion.button>
-    </motion.div>
+    <AnimatePresence>
+      {startScreen && !gameInPlay &&
+      <motion.div
+      className="loader"
+      >
+          <motion.button
+          className="restart-button"
+          style={buttonSize} 
+          onClick={onClick}
+          variants={buttonVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          whileHover="hover"
+          >
+          X v O
+          </motion.button>
+      </motion.div>
+      }
+    </AnimatePresence>
   );
 }
 

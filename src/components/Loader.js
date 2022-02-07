@@ -15,7 +15,6 @@ const containerVariants = {
        duration: 3,
        repeat: Infinity
        },
-       
     }
   };
 

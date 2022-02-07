@@ -28,7 +28,6 @@ export default function RestartButton({onClick, gameInPlay, startScreen}) {
       }
     }
     
-
   return (
     <AnimatePresence>
       {startScreen && !gameInPlay &&
